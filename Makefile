@@ -3,3 +3,4 @@ a.out: main.c ping.c
 
 clean:
 	rm -rf a.out
+	rm -rf *.gch
