@@ -67,7 +67,7 @@ void ping_send_packet(int sock_icmp, struct sockaddr_in *dest_addr, int n_send)
     ping_set_icmp(n_send);
 
     if (sendto(sock_icmp, send_buffer, PING_ICMP_LEN, 0, 
-                (struct sockaddr *)dest_addr, sizeof(struct sockaddr_in)))
+                (struct sockaddr *)dest_addr, sizeof(struct sockaddr_in)) < 0)
     {
         perror("sendto");
     }
