@@ -44,8 +44,6 @@ void ping_set_icmp(u_int16_t seq)
     struct icmp *p_icmp;
     struct timeval *d_time;
 
-    d_time = (struct timeval *)malloc(sizeof(struct timeval));
-
     p_icmp = (struct icmp *)send_buffer;
 
     p_icmp->icmp_type = ICMP_ECHO;
@@ -58,6 +56,7 @@ void ping_set_icmp(u_int16_t seq)
     p_icmp->icmp_cksum = ping_compute_cksum(p_icmp);
 
     if (seq == 1) {
+        d_time = (struct timeval *)malloc(sizeof(struct timeval));
         first_send_time = *d_time;
     }
 }
